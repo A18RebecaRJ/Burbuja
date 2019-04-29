@@ -1,0 +1,67 @@
+package Burbuja;
+
+import java.io.*;
+/**
+*
+*<p> 
+* En la clase burbuja introduciremos unos datos numéricos (tipo integer) que introduciremos en un arreglo
+*</p>
+* <p>
+* Para comenzar en esta clase indicaremos cuántos datos meteremos en el arreglo.
+*</p>
+*<p> 
+* A continuación pedimos el valor de esos datos.
+* Al introducir los valores, también lo hacemos en el arreglo creado.
+*</p>
+*<p>
+* Para finalizar se imprimirán por pantalla los datos del arreglo, uno en cada línea de forma opuesta a como han sido introducidos.
+*</p>
+*@author Rebeca RJ
+*@since 12/02/2019
+*@version 1.0
+**/
+
+public class Burbuja {
+
+    public static void main(String arg[]) throws IOException {
+        
+        //Aquí se crea el objeto que leerá los datos por teclado
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        //Ingresamos el número de datos que vamos a introducir posteriormente 
+        System.out.print("\n Ingrese Numero de Datos a Ingresar : ");
+        int tam = Integer.parseInt(in.readLine());
+        //Creamos el arreglo que contendrá los datos que introduciremos
+        int arr[] = new int[tam];
+
+        System.out.println();
+        //Leemos el arreglo completo
+        int j = 0;
+        for (int i = 0; i < arr.length; i++) {
+            j += 1;
+            System.out.print("Elemento " + j + " : ");
+            arr[i] = Integer.parseInt(in.readLine());
+        }
+        burbuja(arr);
+    }
+    /**
+     * <p>
+     * Imprimimos los datos introducidos en el arreglo por pantalla.
+     * </p>
+     * @param Burbuja 
+     * 
+     **/
+    static void burbuja(int arreglo[]) {
+        for (int i = 0; i < arreglo.length - 1; i++) {
+            for (int j = 0; j < arreglo.length - 1; j++) {
+                if (arreglo[j] < arreglo[j + 1]) {
+                    int tmp = arreglo[j + 1];
+                    arreglo[j + 1] = arreglo[j];
+                    arreglo[j] = tmp;
+                }
+            }
+        }
+        for (int i = 0; i < arreglo.length; i++) {
+            System.out.print(arreglo[i] + "\n");
+        }
+    }
+}
